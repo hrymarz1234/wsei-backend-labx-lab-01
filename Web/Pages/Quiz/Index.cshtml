@@ -1,0 +1,22 @@
+﻿@page ""
+@model Web.Pages.Quiz.IndexModel;
+@{
+    ViewData["Title"] = "Quiz ";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>All Quizzes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Tytuł</th>
+        <th>Liczba pytań</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var quiz in @Model.Quizzes)
+    {
+        
+    }
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+@page "{quizId}/{itemId?}"
+@model Web.Pages.QuizItemModel;
+@{
+    ViewData["Title"] = "Quiz";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Quiz</h1>
+<h3>@Model?.Question</h3>
+<form method="post">
+    @foreach (var item in Model?.Answers)
+    {
+        <div class="form-check">
+            <input type="hidden" asp-for="@Model.ItemId" />
+            <input type="hidden" asp-for="@Model.QuizId" />
+            <input type="hidden" asp-for="@Model.NextItemIndex" />
+            <input class="form-check-input" type="radio" value="@item" asp-for=@Model.UserAnswer />
+            <label class="form-check-label" for="@item">@item</label>
+        </div>
+    }
+    @if (Model.NextItemIndex is not null)
+    {
+        <button type="submit">Next</button>
+    }
+    else
+    {
+        <button type="submit">Finish</button>
+    }
+</form>
